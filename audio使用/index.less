@@ -1,0 +1,79 @@
+
+.volume {
+  position: relative;
+  .volume-progress {
+    position: absolute;
+    top: -150px;
+    width: 32px;
+    height: 140px;
+    background: #f6f6f6;
+    border-radius: 4px;
+    padding-top: 10px;
+  }
+  .volume-bar-bg {
+    margin: 0 auto;
+    width: 6px;
+    height: 120px;
+    background: #dcdcdc;
+    border-radius: 100px;
+    flex: 1;
+    position: relative;
+    transform: rotate(180deg);
+    cursor: pointer;
+    .volume-bar {
+      width: 6px;
+      height: 50%;
+      background: #56bf8b;
+      border-radius: 100px;
+    }
+  }
+  .checked {
+    color: #56bf8b;
+  }
+}
+.audio-right {
+  box-sizing: border-box;
+  width: 100%;
+  height: 49px;
+  line-height: 49px;
+  background: #f6f6f6;
+  border-radius: 6px;
+  display: flex;
+  padding: 0 15px;
+  .dialogAudioPlay {
+    width: 49px;
+    cursor: pointer;
+    color: #5c5e66;
+    font-size: 20px;
+    background: #56bf8b;
+    border-radius: 50%;
+  }
+  .progress-bar-bg {
+    background-color: #fff;
+    flex: 1;
+    position: relative;
+    height: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-top: -1px;
+    cursor: pointer;
+    margin: 0 10px;
+  }
+  .progress-bar {
+    background-color: #56bf8b;
+    width: 0%;
+    height: 10px;
+    border-radius: 5px;
+  }
+
+  .audio-time {
+    overflow: hidden;
+    font-size: 14px;
+    .audio-length-total {
+      float: right;
+    }
+    .audio-length-current {
+      float: left;
+    }
+  }
+}

@@ -5,14 +5,85 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>audio</title>
+    <!-- 引入样式 -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-ui/lib/theme-chalk/index.css"
+    />
+    <link rel="stylesheet" href="./index.css" />
     <style>
-        audio{
-            width: 500px;
-            height: 100px;
-        }
+      audio {
+        width: 500px;
+        height: 100px;
+      }
     </style>
   </head>
   <body>
-    <audio controls preload="metadata" src="./ttsapi.mp3">没出现</audio>
+    <div id="app">
+      <!-- <audio controls preload="metadata" src="./ttsapi.mp3">没出现</audio> -->
+
+      <div>
+        <audio
+          @timeupdate="updateProgress"
+          controls
+          ref="audioRef"
+          style="display: none"
+          :src="fileurl"
+        >
+          <!-- <source :src="fileurl"/> -->
+          您的浏览器不支持音频播放
+        </audio>
+        <div class="audio-right">
+          <i
+            :class="audioStatus !== 'pause' ? 'iconfont icon-bofang' : 'iconfont icon-zanting'"
+            @click="playAudio"
+            class="dialogAudioPlay"
+          ></i>
+          <div
+            class="progress-bar-bg"
+            id="progressBarBg"
+            v-dragto="setAudioIcon"
+          >
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+          <div class="audio-time" style="min-height: 10px">
+            <span class="audio-length-current" id="audioCurTime"
+              >{{ audioStart }}</span
+            >/
+            <span class="audio-length-total">{{ duration }}</span>
+          </div>
+          <div class="volume">
+            <div
+              @click.stop="
+                () => {
+                  return false
+                }
+              "
+              class="volume-progress"
+              v-show="audioHuds"
+            >
+              <div
+                class="volume-bar-bg"
+                id="volumeBarBg"
+                v-adjuster="handleShowMuteIcon"
+              >
+                <div class="volume-bar" id="volumeBar"></div>
+              </div>
+            </div>
+            <i
+              class="iconfont pl-1"
+              :class="audioIcon"
+              @click.stop="audioHuds = !audioHuds"
+            >
+            </i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="./index.js"></script>
   </body>
 </html>
