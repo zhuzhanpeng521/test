@@ -1,0 +1,41 @@
+[v-cloak] {
+  display: none;
+}
+.audio {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+.audio i {
+  width: 40px;
+  height: 40px;
+  font-size: 40px;
+  margin-right: 10px;
+}
+.audio .slider-box {
+  flex: 1;
+}
+.audio .slider-box .time-box {
+  display: flex;
+}
+.audio .slider-box .currentTime,
+.audio .slider-box .totalTime,
+.audio .slider-box .icon-i {
+  font-size: 9px;
+}
+.audio .slider-box .el-slider__bar {
+  height: 4px;
+}
+.audio .slider-box .el-slider__button {
+  width: 4px;
+  height: 4px;
+  background: #409EFF;
+}
+.audio .slider-box .el-slider__runway {
+  height: 4px;
+}
+.audio .slider-box .el-slider__button-wrapper {
+  width: 34px;
+  height: 34px;
+}
