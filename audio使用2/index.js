@@ -29,8 +29,9 @@ var audioDemoVm = new Vue({
     fetch() {
       let that = this;
       setTimeout(() => {
-        that.audioSrc =
-          "https://openapi.youdao.com/ttsapi?voice=0&q=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E8%BF%99%E9%87%8C%E6%98%AF%E6%B5%8B%E8%AF%95%E8%87%AA%E5%AE%9A%E4%B9%89audio%E7%9A%84%E5%A3%B0%E9%9F%B3%E3%80%82&salt=1652336655427&sign=9D18B27D19442D1D889804465DE22458&appKey=2423360539ba5632&langType=auto&speed=1&.mp3";
+        // that.audioSrc =
+        //   "https://openapi.youdao.com/ttsapi?voice=0&q=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E8%BF%99%E9%87%8C%E6%98%AF%E6%B5%8B%E8%AF%95%E8%87%AA%E5%AE%9A%E4%B9%89audio%E7%9A%84%E5%A3%B0%E9%9F%B3%E3%80%82&salt=1652336655427&sign=9D18B27D19442D1D889804465DE22458&appKey=2423360539ba5632&langType=auto&speed=1&.mp3";
+        that.audioSrc = "http://ting6.yymp3.net:82/new27/suhan/3.mp3";
         that.initListener();
       }, 1000);
     },
@@ -75,15 +76,11 @@ var audioDemoVm = new Vue({
     },
     //播放时候 更新进度条
     updateProgress(e) {
- 
-
       // console.log('currentTime', e.target.currentTime);
       // console.log('duration',e.target.duration);
-      if (!this.sliderIsDraging) {
-        console.log('--------');
-        let value = (e.target.currentTime / e.target.duration) * 100;
-        this.value = value;
-      }
+      console.log("--------");
+      let value = (e.target.currentTime / e.target.duration) * 100;
+      this.value = value;
     },
     //点击拖动滑动时候
     sliderValChange(newVal) {
@@ -92,8 +89,11 @@ var audioDemoVm = new Vue({
       let duration = myVideo.duration;
       let percentage = newVal / 100;
       let currentTime = percentage * duration;
-      myVideo.currentTime = currentTime;
+      console.log("myVideo.currentTime", myVideo.currentTime);
+      myVideo.pause();
+      myVideo.currentTime = currentTime + "";
       myVideo.play();
+      console.log("myVideo.currentTime", myVideo.currentTime);
     },
     /**
      * 音频播放时间换算

@@ -27,7 +27,7 @@
       >
         没出现
       </audio>
-      <audio ref="audio" :src="audioSrc" @timeupdate="updateProgress"></audio>
+      <audio ref="audio" :src="audioSrc" @timeupdate="updateProgress" preload="metadata"></audio>
       <div class="audio">
         <i :class="audioIcon" @click="playAudio"></i>
         <div class="slider-box">
