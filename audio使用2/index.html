@@ -20,13 +20,13 @@
   </head>
   <body>
     <div id="app" v-cloak>
-      <audio
+      <!-- <audio
         controls
         preload="metadata"
         src="https://openapi.youdao.com/ttsapi?voice=0&q=%E4%BD%A0%E5%A5%BD%EF%BC%8C%E8%BF%99%E9%87%8C%E6%98%AF%E6%B5%8B%E8%AF%95%E8%87%AA%E5%AE%9A%E4%B9%89audio%E7%9A%84%E5%A3%B0%E9%9F%B3%E3%80%82&salt=1652336655427&sign=9D18B27D19442D1D889804465DE22458&appKey=2423360539ba5632&langType=auto&speed=1&.mp3"
       >
         没出现
-      </audio>
+      </audio> -->
       <audio ref="audio" :src="audioSrc" @timeupdate="updateProgress" preload="metadata"></audio>
       <div class="audio">
         <i :class="audioIcon" @click="playAudio"></i>
@@ -43,7 +43,7 @@
             <el-slider
               class="slider"
               v-model="value"
-              :show-tooltip="true"
+              :show-tooltip="false"
               :min="min"
               :max="max"
               :step="0.1"

@@ -52,14 +52,15 @@ var audioDemoVm = new Vue({
         },
         false
       );
-
+      console.log("myVideo", myVideo);
       if (myVideo != null) {
-        if (!that.duration) {
-          myVideo.oncanplay = function () {
-            that.duration = that.transTime(myVideo.duration); // 计算音频时长
-            console.log(that.transTime(myVideo.duration));
-          };
-        }
+        // if (!that.duration) {
+        myVideo.oncanplay = function () {
+          that.duration = that.transTime(myVideo.duration); // 计算音频时长
+          console.log("........");
+          console.log(" that.duration", that.duration);
+        };
+        // }
         // myVideo.volume = 0.5; // 设置音量50%
       }
     },
@@ -79,8 +80,13 @@ var audioDemoVm = new Vue({
       // console.log('currentTime', e.target.currentTime);
       // console.log('duration',e.target.duration);
       console.log("--------");
-      let value = (e.target.currentTime / e.target.duration) * 100;
-      this.value = value;
+      if (!this.sliderIsDraging) {
+        let value = (e.target.currentTime / e.target.duration) * 100;
+        this.value = value;
+        if (e.target.currentTime) {
+          this.audioStart = this.transTime(e.target.currentTime);
+        }
+      }
     },
     //点击拖动滑动时候
     sliderValChange(newVal) {
@@ -90,9 +96,7 @@ var audioDemoVm = new Vue({
       let percentage = newVal / 100;
       let currentTime = percentage * duration;
       console.log("myVideo.currentTime", myVideo.currentTime);
-      myVideo.pause();
       myVideo.currentTime = currentTime + "";
-      myVideo.play();
       console.log("myVideo.currentTime", myVideo.currentTime);
     },
     /**
